@@ -1,4 +1,4 @@
-package com.codebasetemplate.features.core
+package com.codebasetemplate.features.app.main
 
 import android.os.Bundle
 import android.view.LayoutInflater

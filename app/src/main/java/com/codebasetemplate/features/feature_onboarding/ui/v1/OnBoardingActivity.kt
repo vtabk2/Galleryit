@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.codebasetemplate.core.base_ui.CoreActivity
 import com.codebasetemplate.databinding.CoreActivityOnboardingBinding
-import com.codebasetemplate.features.core.MainActivity
+import com.codebasetemplate.features.app.main.MainActivity
 import com.codebasetemplate.features.feature_onboarding.ui.adapter.OnBoardingPagerAdapter
 import com.codebasetemplate.features.feature_onboarding.ui.helper.OnBoardingConfigFactory
 import com.codebasetemplate.features.feature_onboarding.ui.model.OnBoardingItem

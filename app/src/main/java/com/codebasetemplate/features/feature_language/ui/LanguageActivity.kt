@@ -13,7 +13,7 @@ import androidx.core.os.LocaleListCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.codebasetemplate.core.base_ui.CoreActivity
 import com.codebasetemplate.databinding.CoreActivityLanguageBinding
-import com.codebasetemplate.features.core.MainActivity
+import com.codebasetemplate.features.app.main.MainActivity
 import com.codebasetemplate.features.feature_language.ui.adapter.SupportedLanguageAdapter
 import com.codebasetemplate.features.feature_onboarding.ui.helper.OnBoardingConfigFactory
 import com.codebasetemplate.required.firebase.GetDataFromRemoteUseCaseImpl

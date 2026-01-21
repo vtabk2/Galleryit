@@ -2,7 +2,7 @@ package com.codebasetemplate
 
 import android.content.Context
 import android.content.Intent
-import com.codebasetemplate.features.core.MainActivity
+import com.codebasetemplate.features.app.main.MainActivity
 import com.codebasetemplate.features.feature_demo_frame_mvvm.common.FrameConstants
 import com.codebasetemplate.features.feature_demo_frame_mvvm.frame_detail.ui.FrameDetailActivity
 

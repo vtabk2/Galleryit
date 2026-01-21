@@ -9,7 +9,7 @@ import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.viewbinding.ViewBinding
 import com.codebasetemplate.core.base_ui.CoreActivity
-import com.codebasetemplate.features.core.MainActivity
+import com.codebasetemplate.features.app.main.MainActivity
 import com.codebasetemplate.features.feature_language.ui.LanguageActivity
 import com.codebasetemplate.features.feature_onboarding.ui.helper.OnBoardingConfigFactory
 import com.codebasetemplate.features.feature_uninstall.ui.UninstallActivityHost
