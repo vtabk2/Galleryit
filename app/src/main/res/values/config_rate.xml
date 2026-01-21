@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fb_text_size_title_dialog_rate">15sp</dimen>
+    <dimen name="fb_text_size_feedback_title">20sp</dimen>
+    <dimen name="fb_text_size_button_rate_now">18sp</dimen>
+    <dimen name="fb_text_size_button_send">18sp</dimen>
+    <dimen name="fb_text_size_type">15sp</dimen>
+    <dimen name="fb_padding_bottom_feedback">17dp</dimen>
+    <dimen name="fb_top_margin_button_submit_feedback">-60dp</dimen>
+    <dimen name="fb_thank_feedback_title_marginTop">15dp</dimen>
+    <dimen name="fb_dialog_rate_bottom_height">160dp</dimen>
+
+    <bool name="fb_button_submit_feedback_inside_input">true</bool>
+    <bool name="fb_show_text_type_in_feedback">true</bool>
+
+    <drawable name="fb_ic_back_feedback">@drawable/core_selector_ic_back</drawable>
+
+
+    <string name="fb_email_feedback" translatable="false">kunkunnapps@gmail.com</string>
+</resources>

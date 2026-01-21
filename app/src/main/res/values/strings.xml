@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">CodeBaseTemplate</string>
+    <string name="open_short_cut_action" translatable="false">open.short.cut.Action</string>
+    <string name="core_shortcut_short_label_uninstall">Uninstall</string>
+    <string name="core_shortcut_long_label_uninstall">Uninstall</string>
+    <string name="core_shortcut_short_label_settings">Setting</string>
+    <string name="core_shortcut_long_label_settings">Setting</string>
+    <string name="core_back_button_desc">Back</string>
+    <string name="core_feedback_title">What problems you encounter during use</string>
+    <string name="core_feedback_subtitle">We will bring you a better experience.</string>
+    <string name="core_feedback_illustration_desc">Hình minh họa</string>
+    <string name="core_option_1_text">Cannot find the deleted image</string>
+    <string name="core_rescan_button">Rescan</string>
+    <string name="core_option_2_text">Nothing interesting anymore</string>
+    <string name="core_explore_button">Explore</string>
+    <string name="core_dont_uninstall_button">Don\'t uninstall yet</string>
+    <string name="core_still_uninstall_button">Still want to uninstall</string>
+    <!-- ... các string khác ... -->
+    <string name="core_uninstall_feedback_title">Why uninstall All Recovery - Photos, Videos?</string>
+    <string name="core_reason_cant_find_photos">Can\'t find deleted photos</string>
+    <string name="core_reason_doesnt_restore">Doesn\'t correctly restore the desired image</string>
+    <string name="core_reason_difficulty_recovering">Difficulty in recovering other files</string>
+    <string name="core_reason_too_many_ads">Too many ads</string>
+    <string name="core_cancel_button">Cancel</string>
+    <string name="core_uninstall_button">Uninstall</string>
+    <string name="core_common_save">Save</string>
+    <string name="core_screen_language">Language</string>
+    <string name="core_common_skip">Skip</string>
+    <string name="core_common_continue">Continue</string>
+    <string name="core_onboarding_title_1">Đây là dòng tutorial 1</string>
+    <string name="core_onboarding_title_2">Đây là dòng tutorial 2</string>
+    <string name="core_onboarding_title_3">Đây là dòng tutorial 3</string>
+    <string name="core_onboarding_action_next">Next</string>
+    <string name="core_onboarding_action_get_start">Get started</string>
+    <string name="core_apply_language">Đang áp dụng ngôn ngữ…</string>
+    <string name="shortcut_short_label_screen_1">Screen 1</string>
+    <string name="shortcut_long_label_screen_1">Screen 1</string>
+    <string name="shortcut_short_label_screen_2">Screen 2</string>
+    <string name="shortcut_long_label_screen_2">Screen 2</string>
+    <string name="exit_the_application">Exit The Application?</string>
+    <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
+    <string name="common_yes">Yes</string>
+    <string name="common_no">No</string>
+
+    <string name="msg_update_downloaded">An update has just been downloaded.</string>
+    <string name="text_restart">Restart</string>
+</resources>

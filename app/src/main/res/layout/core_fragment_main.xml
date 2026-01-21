@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Sử dụng CoordinatorLayout làm layout gốc để hỗ trợ các hành vi của Material Design,
+     ví dụ như ẩn/hiện toolbar khi cuộn. -->
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurfaceContainerLowest"
+    android:orientation="vertical">
+
+    <com.core.baseui.toolbar.CoreToolbarView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ctv_ic_action_icon="@drawable/core_ic_setting"
+        app:ctv_ic_action_show="true"
+        app:ctv_ic_back_show="false"
+        app:ctv_tv_title="Home" />
+
+    <!-- NestedScrollView cho phép nội dung bên trong có thể cuộn.
+         app:layout_behavior là một định danh của thư viện và không nên thay đổi. -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- LinearLayout để sắp xếp các mục theo chiều dọc. -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
+
+            <!-- Mục 1: Native and Banner -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/nativeAndBannerLayout"
+                style="@style/MenuItemStyle"
+                android:background="@drawable/bg_transparent_ripple_media_shape">
+
+                <ImageView
+                    style="@style/MenuIconStyle"
+                    android:contentDescription="Native and Banner"
+                    android:src="@drawable/ic_view_carousel"
+                    app:tint="@color/indigo_500" />
+
+                <TextView
+                    style="@style/MenuTextStyle"
+                    android:text="Native and Banner" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- Mục 2: Native in List -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/nativeInListLayout"
+                style="@style/MenuItemStyle"
+                android:background="@drawable/bg_transparent_ripple_media_shape">
+
+                <ImageView
+                    style="@style/MenuIconStyle"
+                    android:contentDescription="Native in List"
+                    android:src="@drawable/ic_view_list"
+                    app:tint="@color/purple_500" />
+
+                <TextView
+                    style="@style/MenuTextStyle"
+                    android:text="Native in List" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- Mục 3: Shop -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/shopLayout"
+                style="@style/MenuItemStyle"
+                android:background="@drawable/bg_transparent_ripple_media_shape">
+
+                <ImageView
+                    style="@style/MenuIconStyle"
+                    android:contentDescription="Shop"
+                    android:src="@drawable/ic_storefront"
+                    app:tint="@color/green_500" />
+
+                <TextView
+                    style="@style/MenuTextStyle"
+                    android:text="Shop" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- Mục 4: Show Reward -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/showRewardLayout"
+                style="@style/MenuItemStyle"
+                android:background="@drawable/bg_transparent_ripple_media_shape">
+
+                <ImageView
+                    style="@style/MenuIconStyle"
+                    android:contentDescription="Show Reward"
+                    android:src="@drawable/ic_card_giftcard"
+                    app:tint="@color/amber_500" />
+
+                <TextView
+                    style="@style/MenuTextStyle"
+                    android:text="Show Reward" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- Mục 5: Show Interstitial -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/showInterstitialLayout"
+                style="@style/MenuItemStyle"
+                android:background="@drawable/bg_transparent_ripple_media_shape">
+
+                <ImageView
+                    style="@style/MenuIconStyle"
+                    android:contentDescription="Show Interstitial"
+                    android:src="@drawable/ic_fullscreen"
+                    app:tint="@color/red_500" />
+
+                <TextView
+                    style="@style/MenuTextStyle"
+                    android:text="Show Interstitial Preload" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- Mục 5: Show Interstitial -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/loadInterstitialLayout"
+                style="@style/MenuItemStyle"
+                android:background="@drawable/bg_transparent_ripple_media_shape">
+
+                <ImageView
+                    style="@style/MenuIconStyle"
+                    android:contentDescription="load Interstitial"
+                    android:src="@drawable/ic_fullscreen"
+                    app:tint="@color/red_500" />
+
+                <TextView
+                    style="@style/MenuTextStyle"
+                    android:text="Lazy Load Interstitial 2" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/showInterstitialLayoutLazyLoad"
+                style="@style/MenuItemStyle"
+                android:background="@drawable/bg_transparent_ripple_media_shape">
+
+                <ImageView
+                    style="@style/MenuIconStyle"
+                    android:contentDescription="load Interstitial"
+                    android:src="@drawable/ic_fullscreen"
+                    app:tint="@color/red_500" />
+
+                <TextView
+                    style="@style/MenuTextStyle"
+                    android:text="Show Interstitial 2" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.core.ads.customviews.ads.BannerNativeContainerLayout
+        android:id="@+id/layoutBannerNative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bnl_background="@color/white" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

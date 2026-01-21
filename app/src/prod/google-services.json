@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "608551573981",
+    "project_id": "high-pixelart",
+    "storage_bucket": "high-pixelart.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608551573981:android:1e1c1ba7b7d43fb6f13e34",
+        "android_client_info": {
+          "package_name": "com.highsecure.pixel.art"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608551573981-bps5adv4qn9oa662tp9jrssvhvnk4tvj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.highsecure.pixel.art",
+            "certificate_hash": "115f9f9ad5eeaf8f8ce7ffc2ee90158563a57fca"
+          }
+        },
+        {
+          "client_id": "608551573981-b2leafst8euvi4tn6fesrmjqd35dhb4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWkwe4feeWnQJ5x_SMnQaMopFwMZjsWpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608551573981-b2leafst8euvi4tn6fesrmjqd35dhb4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-4253116256630907~5239449151"
+    }
+  ],
+  "configuration_version": "1"
+}

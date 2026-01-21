@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <com.core.baseui.toolbar.CoreToolbarView
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:ctv_tv_title="Setting" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:text="Language"
+        android:layout_margin="@dimen/_10dp"
+        android:id="@+id/tvLanguage"
+        style="@style/TextInSetting"
+        android:layout_height="wrap_content"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:text="Policy"
+        android:id="@+id/tvPolicy"
+        android:layout_margin="@dimen/_10dp"
+        style="@style/TextInSetting"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:text="Rate us"
+        android:id="@+id/tvRateUs"
+        android:layout_margin="@dimen/_10dp"
+        style="@style/TextInSetting"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:text="Share app"
+        android:layout_margin="@dimen/_10dp"
+        android:id="@+id/tvShareApp"
+        style="@style/TextInSetting"
+        android:layout_height="wrap_content"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

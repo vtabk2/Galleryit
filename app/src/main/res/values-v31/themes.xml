@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.App.Starting" parent="Theme.CodeBaseTemplate">
+        <!-- Màu nền cho splash screen -->
+        <item name="android:windowSplashScreenBackground">@color/white</item>
+
+        <!-- Icon sẽ hiển thị ở giữa. API 12+ -->
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+
+
+        <!-- Theme sẽ được áp dụng sau khi splash screen kết thúc -->
+    </style>
+</resources>

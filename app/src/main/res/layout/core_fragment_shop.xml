@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurfaceContainerLowest">
+
+    <!-- Thanh ứng dụng (App Bar) -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface">
+
+        <com.core.baseui.toolbar.CoreToolbarView
+            android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:ctv_tv_title="Cửa hàng VIP" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Nội dung chính có thể cuộn -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Nâng cấp tài khoản"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <!-- Gói Trọn Đời (Nổi bật) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/lifetimeCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/indigo_500"
+                app:strokeWidth="2dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/bestChoiceBanner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-20dp"
+                        android:layout_marginEnd="-40dp"
+                        android:background="@color/indigo_500"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="4dp"
+                        android:rotation="45"
+                        android:text="Lựa chọn tốt nhất"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/lifetimeIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_workspace_premium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/indigo_500" />
+
+                    <TextView
+                        android:id="@+id/lifetimeTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Gói Trọn Đời"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        app:layout_constraintEnd_toStartOf="@id/buyLifetimeButton"
+                        app:layout_constraintStart_toEndOf="@id/lifetimeIcon"
+                        app:layout_constraintTop_toTopOf="@id/lifetimeIcon" />
+
+                    <TextView
+                        android:id="@+id/lifetimeDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Thanh toán một lần, sử dụng mãi mãi"
+                        app:layout_constraintEnd_toEndOf="@id/lifetimeTitle"
+                        app:layout_constraintStart_toStartOf="@id/lifetimeTitle"
+                        app:layout_constraintTop_toBottomOf="@id/lifetimeTitle" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buyLifetimeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mua ngay"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Gói 1 Năm -->
+            <com.google.android.material.card.MaterialCardView style="@style/SubscriptionCard">
+
+                <include
+                    android:id="@+id/yearlyCard"
+                    layout="@layout/core_item_subscription" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Gói 1 Tháng -->
+            <com.google.android.material.card.MaterialCardView style="@style/SubscriptionCard">
+
+                <include
+                    android:id="@+id/monthlyCard"
+                    layout="@layout/core_item_subscription" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Gói 1 Tuần -->
+            <com.google.android.material.card.MaterialCardView
+
+                style="@style/SubscriptionCard">
+
+                <include
+                    android:id="@+id/weeklyCard"
+                    layout="@layout/core_item_subscription" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <!-- Thao tác khác -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="Thao tác khác"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <LinearLayout
+                android:id="@+id/restoreLayout"
+                style="@style/ActionItem">
+
+                <ImageView
+                    style="@style/ActionIcon"
+                    android:src="@drawable/ic_restore"
+                    app:tint="@color/blue_500" />
+
+                <TextView
+                    style="@style/ActionText"
+                    android:text="Khôi phục giao dịch" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/removeVipLayout"
+                style="@style/ActionItem">
+
+                <ImageView
+                    style="@style/ActionIcon"
+                    android:src="@drawable/ic_delete"
+                    app:tint="@color/red_500" />
+
+                <TextView
+                    style="@style/ActionText"
+                    android:text="Xóa trạng thái VIP" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
