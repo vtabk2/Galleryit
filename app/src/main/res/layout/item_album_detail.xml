@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.codebasetemplate.features.app.customview.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="1dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageSelected"
+            style="@style/DefaultIcon"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/_10dp"
+            app:srcCompat="@drawable/core_ic_radio"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageRipple"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:scaleType="centerCrop"/>
+    </FrameLayout>
+</com.codebasetemplate.features.app.customview.SquareLayout>

@@ -19,8 +19,8 @@ class SelectedImageViewModel @Inject constructor(
     private val _albumListFlow = MutableStateFlow<MutableList<LoadImageDataUtils.Album>>(mutableListOf())
     val albumListFlow: SharedFlow<MutableList<LoadImageDataUtils.Album>> = _albumListFlow
 
-    private val _detailFlow = MutableStateFlow<LoadImageDataUtils.AlbumDetail?>(null)
-    val detailFlow: SharedFlow<LoadImageDataUtils.AlbumDetail?> = _detailFlow
+    private val _albumDetailFlow = MutableStateFlow<LoadImageDataUtils.AlbumDetail?>(null)
+    val albumDetailFlow: SharedFlow<LoadImageDataUtils.AlbumDetail?> = _albumDetailFlow
 
     fun loadAlbum() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -30,7 +30,7 @@ class SelectedImageViewModel @Inject constructor(
                 }
             }, callbackDetailList = {
                 viewModelScope.launch(Dispatchers.IO) {
-                    _detailFlow.emit(it)
+                    _albumDetailFlow.emit(it)
                 }
             })
         }
@@ -40,7 +40,7 @@ class SelectedImageViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             loadImageRepository.loadAlbumDetail(albumId, albumName, reload, callbackDetailList = {
                 viewModelScope.launch(Dispatchers.IO) {
-                    _detailFlow.emit(it)
+                    _albumDetailFlow.emit(it)
                 }
             })
         }

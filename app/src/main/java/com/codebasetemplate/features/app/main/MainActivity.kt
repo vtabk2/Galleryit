@@ -3,16 +3,22 @@ package com.codebasetemplate.features.app.main
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.viewModels
 import com.codebasetemplate.R
 import com.codebasetemplate.databinding.ActivityMainBinding
 import com.codebasetemplate.features.app.base.BaseSelectedImageActivity
 import com.codebasetemplate.features.app.customview.CustomTabLayoutView
 import com.codebasetemplate.features.app.main.adapter.MainCategoryAdapter
+import com.codebasetemplate.features.app.main.fragment.ShareMainViewModel
+import com.core.baseui.ext.collectFlowOn
+import com.core.baseui.ext.collectFlowOnNullable
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
     private var adapter: MainCategoryAdapter? = null
+
+    private val shareMainViewModel: ShareMainViewModel by viewModels()
 
     override fun getSurfaceView(): View {
         return viewBinding.toolbar
@@ -50,5 +56,13 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
                 viewBinding.vpMain.offscreenPageLimit = position
             }
         })
+
+        collectFlowOn(selectedImageViewModel.albumListFlow) { albumList ->
+            shareMainViewModel.updateAlbumList(albumList = albumList)
+        }
+
+        collectFlowOnNullable(selectedImageViewModel.albumDetailFlow) { albumDetail ->
+            shareMainViewModel.updateAlbumDetail(albumDetail = albumDetail)
+        }
     }
 }
