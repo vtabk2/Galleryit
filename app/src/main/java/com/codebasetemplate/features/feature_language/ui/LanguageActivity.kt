@@ -13,9 +13,9 @@ import androidx.core.os.LocaleListCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.codebasetemplate.core.base_ui.CoreActivity
 import com.codebasetemplate.databinding.CoreActivityLanguageBinding
+import com.codebasetemplate.features.core.MainActivity
 import com.codebasetemplate.features.feature_language.ui.adapter.SupportedLanguageAdapter
 import com.codebasetemplate.features.feature_onboarding.ui.helper.OnBoardingConfigFactory
-import com.codebasetemplate.features.main.ui.MainActivityHost
 import com.codebasetemplate.required.firebase.GetDataFromRemoteUseCaseImpl
 import com.codebasetemplate.required.shortcut.AppShortCut
 import com.core.ads.BaseAdmobApplication
@@ -115,7 +115,7 @@ class LanguageActivity : CoreActivity<CoreActivityLanguageBinding>() {
             if (isFromSetting) {
                 val intent = Intent(
                     this@LanguageActivity,
-                    MainActivityHost::class.java
+                    MainActivity::class.java
                 )
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 val bundle = Bundle().apply {
@@ -132,7 +132,7 @@ class LanguageActivity : CoreActivity<CoreActivityLanguageBinding>() {
                     if (isEnableIntroductionScreen) {
                         OnBoardingConfigFactory.getOnBoardingClass(getDataFromRemoteUseCase.onBoardingConfig)
                     } else {
-                        MainActivityHost::class.java
+                        MainActivity::class.java
                     }
                 )
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

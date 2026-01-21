@@ -9,10 +9,10 @@ import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.viewbinding.ViewBinding
 import com.codebasetemplate.core.base_ui.CoreActivity
+import com.codebasetemplate.features.core.MainActivity
 import com.codebasetemplate.features.feature_language.ui.LanguageActivity
 import com.codebasetemplate.features.feature_onboarding.ui.helper.OnBoardingConfigFactory
 import com.codebasetemplate.features.feature_uninstall.ui.UninstallActivityHost
-import com.codebasetemplate.features.main.ui.MainActivityHost
 import com.codebasetemplate.required.ads.AppAdPlaceName
 import com.codebasetemplate.required.firebase.GetDataFromRemoteUseCaseImpl
 import com.codebasetemplate.required.shortcut.AppScreenType
@@ -486,7 +486,7 @@ abstract class BaseSplashActivity<VB : ViewBinding> : CoreActivity<VB>() {
 
                     /**Những case shortcut khác*/
                     targetScreenFromShortCut?.isNotBlank() == true -> {
-                        Intent(this@BaseSplashActivity, MainActivityHost::class.java).apply {
+                        Intent(this@BaseSplashActivity, MainActivity::class.java).apply {
                             val bundle = Bundle().apply {
                                 putString(
                                     AppShortCut.KEY_SHORTCUT_TARGET_SCREEN,
@@ -508,7 +508,7 @@ abstract class BaseSplashActivity<VB : ViewBinding> : CoreActivity<VB>() {
                     }
 
                     else -> {
-                        Intent(this@BaseSplashActivity, MainActivityHost::class.java)
+                        Intent(this@BaseSplashActivity, MainActivity::class.java)
                     }
                 }
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -543,7 +543,7 @@ abstract class BaseSplashActivity<VB : ViewBinding> : CoreActivity<VB>() {
             timeShowIntro = System.currentTimeMillis()
             Intent(this@BaseSplashActivity, OnBoardingConfigFactory.getOnBoardingClass(getDataFromRemoteUseCase.onBoardingConfig))
         } else {
-            Intent(this@BaseSplashActivity, MainActivityHost::class.java)
+            Intent(this@BaseSplashActivity, MainActivity::class.java)
         }
     }
 

@@ -8,10 +8,10 @@ import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.codebasetemplate.core.base_ui.CoreActivity
 import com.codebasetemplate.databinding.CoreActivityOnboardingBinding
+import com.codebasetemplate.features.core.MainActivity
 import com.codebasetemplate.features.feature_onboarding.ui.adapter.OnBoardingPagerAdapter
 import com.codebasetemplate.features.feature_onboarding.ui.helper.OnBoardingConfigFactory
 import com.codebasetemplate.features.feature_onboarding.ui.model.OnBoardingItem
-import com.codebasetemplate.features.main.ui.MainActivityHost
 import com.codebasetemplate.required.firebase.GetDataFromRemoteUseCaseImpl
 import com.codebasetemplate.required.shortcut.AppShortCut
 import com.core.ads.BaseAdmobApplication
@@ -229,7 +229,7 @@ class OnBoardingActivity : CoreActivity<CoreActivityOnboardingBinding>() {
     }
 
     private fun openMain() {
-        val intent = Intent(this, MainActivityHost::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         val bundle = Bundle().apply {
             putString(AppShortCut.KEY_SHORTCUT_TARGET_SCREEN, targetScreenFromShortCut)
         }
