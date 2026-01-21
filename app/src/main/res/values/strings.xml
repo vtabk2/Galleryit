@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CodeBaseTemplate</string>
+    <string name="app_name">Galleryit</string>
     <string name="open_short_cut_action" translatable="false">open.short.cut.Action</string>
     <string name="core_shortcut_short_label_uninstall">Uninstall</string>
     <string name="core_shortcut_long_label_uninstall">Uninstall</string>
@@ -53,4 +53,8 @@
 
     <string name="msg_write_storage">To make it more convenient to use the application, you can grant permissions to the application at \n\n[Setting] &gt; [Permission] &gt; \n[Photos and videos] &gt; [Always allow all]</string>
     <string name="msg_permission">"If you reject the permissions, you can not use this app\n\nPlease turn on permissions at [Setting] > [Permission]"</string>
+
+    <string name="tab_all">All</string>
+    <string name="tab_photos">Photos</string>
+    <string name="tab_videos">Videos</string>
 </resources>
