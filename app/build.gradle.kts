@@ -123,6 +123,13 @@ dependencies {
 
     implementation(libs.kotlin.reflect)
 
+    implementation(libs.coil)
+    implementation(libs.coil.svg)
+
+    implementation(libs.glide)
+    ksp(libs.glide.ksp)
+    implementation(libs.androidsvg.aar)
+
     // Moshi
     implementation (libs.moshi.kotlin)
     implementation (libs.moshi)

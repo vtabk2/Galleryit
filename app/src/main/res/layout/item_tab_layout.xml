@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textSize="14sp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageIconTab"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:padding="5dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageError"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:padding="5dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/effect_0_thumb"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageVipTab"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
+        android:elevation="5dp"
+        android:visibility="gone"/>
+
+    <View
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@android:color/holo_red_dark"/>
+</FrameLayout>

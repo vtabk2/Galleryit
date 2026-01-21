@@ -5,4 +5,27 @@
         <attr name="OutlineTextView_stroke_size" format="dimension"/>
         <attr name="OutlineTextView_gradient" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="CustomTabLayoutView">
+        <attr name="ctl_background" format="reference"/>
+        <attr name="ctl_background_item" format="reference"/>
+        <attr name="ctl_number_item_in_screen" format="integer"/>
+        <attr name="ctl_show_indicator" format="boolean"/>
+        <attr name="ctl_show_icon" format="boolean"/>
+        <attr name="ctl_show_background_item" format="boolean"/>
+        <attr name="ctl_text_color_selector" format="reference"/>
+        <attr name="ctl_text_color_selected" format="reference"/>
+        <attr name="ctl_text_color_unselected" format="reference"/>
+        <attr name="ctl_text_color_disabled" format="reference"/>
+        <attr name="ctl_indicator_color" format="reference"/>
+        <attr name="ctl_indicator_size" format="enum">
+            <enum name="full" value="0"/>
+            <enum name="wrap" value="1"/>
+            <enum name="min" value="2"/>
+        </attr>
+        <attr name="ctl_indicator_padding_horizontal" format="dimension"/>
+        <attr name="ctl_item_margin_horizontal" format="dimension"/>
+        <attr name="ctl_item_margin_vertical" format="dimension"/>
+        <attr name="ctl_text_size" format="dimension"/>
+    </declare-styleable>
 </resources>

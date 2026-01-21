@@ -2,6 +2,7 @@ package com.codebasetemplate.features.app.base
 
 import android.content.Context
 import android.net.Uri
+import com.codebasetemplate.utils.FileManager
 import com.codebasetemplate.utils.extensions.config
 import com.codebasetemplate.utils.load.LoadImageDataUtils
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -27,6 +28,6 @@ class LoadImageRepository @Inject constructor(@ApplicationContext private val co
     }
 
     fun checkUriValidate(uri: Uri, callback: (path: String) -> Unit, callbackFailed: () -> Unit) {
-//        FileManager.checkUriValidate(context, uri, callback, callbackFailed)
+        FileManager.checkUriValidate(context, uri, callback, callbackFailed)
     }
 }
