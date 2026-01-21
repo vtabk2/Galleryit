@@ -31,4 +31,5 @@
     <color name="splash_background_color">#ffffff</color>
     <color name="test">#D1D1D1</color>
 
+    <color name="color_selected">#039BE5</color>
 </resources>

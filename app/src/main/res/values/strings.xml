@@ -44,4 +44,11 @@
 
     <string name="msg_update_downloaded">An update has just been downloaded.</string>
     <string name="text_restart">Restart</string>
+
+    <string name="text_settings">Settings</string>
+    <string name="text_skip">Skip</string>
+    <string name="text_close">Close</string>
+
+    <string name="msg_write_storage">To make it more convenient to use the application, you can grant permissions to the application at \n\n[Setting] &gt; [Permission] &gt; \n[Photos and videos] &gt; [Always allow all]</string>
+    <string name="msg_permission">"If you reject the permissions, you can not use this app\n\nPlease turn on permissions at [Setting] > [Permission]"</string>
 </resources>
