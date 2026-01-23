@@ -83,6 +83,8 @@ dependencies {
     implementation(project(":core:dimens"))
     implementation(project(":core:rate"))
 
+    implementation(project(":patternlockview"))
+
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)

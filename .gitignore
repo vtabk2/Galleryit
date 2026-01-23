@@ -1,18 +1,23 @@
+# Android / Gradle
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/compiler.xml
-/.idea/
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.gradle/
 local.properties
-.kotlin/
+/.idea/
+.DS_Store
+
+# Build outputs (cho tất cả module)
+**/build/
+**/captures/
+**/.externalNativeBuild/
+**/.cxx/
+**/.kotlin/
+
+# IntelliJ / Android Studio specific
+.idea/*
+!/.idea/codeStyles
+!/.idea/inspectionProfiles
+
+# Misc
+*.log
+*.keystore
+*.jks
