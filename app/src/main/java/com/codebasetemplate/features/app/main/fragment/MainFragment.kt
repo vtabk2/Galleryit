@@ -2,7 +2,6 @@ package com.codebasetemplate.features.app.main.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -14,6 +13,7 @@ import com.codebasetemplate.databinding.FragmentMainBinding
 import com.codebasetemplate.features.app.main.adapter.AlbumDetailAdapter
 import com.codebasetemplate.required.shortcut.AppScreenType
 import com.codebasetemplate.utils.glide.thumb.CacheThumbnail
+import com.codebasetemplate.utils.glide.thumb.MediaType
 import com.codebasetemplate.utils.load.LoadImageDataUtils
 import com.core.baseui.fragment.ScreenType
 import com.core.baseui.fragment.collectFlowOn
@@ -51,7 +51,6 @@ class MainFragment : CoreFragment<FragmentMainBinding>() {
 
     private fun setupAlbum(ct: Context) {
         collectFlowOn(shareMainViewModel.albumListFlow) { list ->
-            Log.d("TAG5", "MainFragment_initViews: albumList = $list")
             albumList.clear()
             albumList.addAll(list)
         }
@@ -89,15 +88,36 @@ class MainFragment : CoreFragment<FragmentMainBinding>() {
         viewBinding.rvAlbumDetail.setHasFixedSize(true)
 
         collectFlowOn(shareMainViewModel.albumDetailFlow) { albumDetail ->
-            Log.d("TAG5", "MainFragment_initViews: albumDetail = $albumDetail")
+            val list = when (type) {
+                TYPE_ALL -> {
+                    albumDetail?.detailList
+                }
+
+                TYPE_PHOTOS -> {
+                    albumDetail?.detailList?.filter { it.mediaType == MediaType.IMAGE }
+                }
+
+                TYPE_VIDEOS -> {
+                    albumDetail?.detailList?.filter { it.mediaType == MediaType.VIDEO }
+                }
+
+                else -> {
+                    mutableListOf()
+                }
+            } ?: mutableListOf()
+
             urlList.clear()
-            urlList.addAll(albumDetail?.detailList ?: mutableListOf())
+            urlList.addAll(list)
             albumDetailAdapter?.notifyDataSetChanged()
         }
     }
 
     companion object {
         private const val TYPE = "TYPE"
+
+        const val TYPE_ALL = 0
+        const val TYPE_PHOTOS = 1
+        const val TYPE_VIDEOS = 2
 
         fun newInstance(type: Int) = MainFragment().apply {
             arguments = Bundle().apply {

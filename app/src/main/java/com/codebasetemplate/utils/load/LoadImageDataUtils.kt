@@ -278,7 +278,6 @@ object LoadImageDataUtils {
         var imgUrl: String = "",
         var albumIcon: Int = 0,
         var isSelected: Boolean = false,
-        var count: Int = 1,
         var isCamera: Boolean = false,
         var isGooglePhotos: Boolean = false,
         var imageCount: Int = 0,

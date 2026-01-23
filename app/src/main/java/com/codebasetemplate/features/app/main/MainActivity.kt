@@ -9,6 +9,7 @@ import com.codebasetemplate.databinding.ActivityMainBinding
 import com.codebasetemplate.features.app.base.BaseSelectedImageActivity
 import com.codebasetemplate.features.app.customview.CustomTabLayoutView
 import com.codebasetemplate.features.app.main.adapter.MainCategoryAdapter
+import com.codebasetemplate.features.app.main.fragment.MainFragment
 import com.codebasetemplate.features.app.main.fragment.ShareMainViewModel
 import com.core.baseui.ext.collectFlowOn
 import com.core.baseui.ext.collectFlowOnNullable
@@ -31,18 +32,18 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
     override fun initViews(savedInstanceState: Bundle?) {
         super.initViews(savedInstanceState)
 
-        val list = mutableListOf<String>().apply {
-            add(getString(R.string.tab_all))
-            add(getString(R.string.tab_photos))
-            add(getString(R.string.tab_videos))
+        val list = mutableListOf<Pair<String, Int>>().apply {
+            add(Pair(getString(R.string.tab_all), MainFragment.TYPE_ALL))
+            add(Pair(getString(R.string.tab_photos), MainFragment.TYPE_PHOTOS))
+            add(Pair(getString(R.string.tab_videos), MainFragment.TYPE_VIDEOS))
         }
 
-        adapter = MainCategoryAdapter(supportFragmentManager, lifecycle)
+        adapter = MainCategoryAdapter(list, supportFragmentManager, lifecycle)
         viewBinding.vpMain.adapter = adapter
 
         viewBinding.customTabLayoutView.onUpdateTitleTabLayoutListener = object : CustomTabLayoutView.OnUpdateTitleTabLayoutListener {
             override fun getTitle(position: Int): String {
-                return list.getOrNull(position) ?: ""
+                return list.getOrNull(position)?.first ?: ""
             }
         }
 

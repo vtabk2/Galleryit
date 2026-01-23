@@ -15,10 +15,6 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.InputStream
-import kotlin.apply
-import kotlin.jvm.java
-import kotlin.let
-import kotlin.run
 
 class UriDataFetcher(private val context: Context, private val model: CacheThumbnail) : DataFetcher<InputStream> {
 

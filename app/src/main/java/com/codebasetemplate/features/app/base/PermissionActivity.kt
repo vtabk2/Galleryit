@@ -35,22 +35,15 @@ abstract class PermissionActivity<VB : ViewBinding> : CoreActivity<VB>() {
         // Handle permission requests results
         // See the permission example in the Android platform samples: https://github.com/android/platform-samples
         if (!results.isNullOrEmpty()) {
-            val readMediaImages = if (results.containsKey(Manifest.permission.READ_MEDIA_IMAGES)) {
-                results[Manifest.permission.READ_MEDIA_IMAGES] ?: false
-            } else {
-                false
-            }
-            val readMediaVisualUserSelected = if (results.containsKey(Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED)) {
-                results[Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED] ?: false
-            } else {
-                false
-            }
-            val readExternalStorage = if (results.containsKey(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                results[Manifest.permission.WRITE_EXTERNAL_STORAGE] ?: false
-            } else {
-                false
-            }
-            if (readMediaImages || readMediaVisualUserSelected || readExternalStorage) {
+            val readMediaImages = results[Manifest.permission.READ_MEDIA_IMAGES] ?: false
+
+            val readMediaVideo = results[Manifest.permission.READ_MEDIA_VIDEO] ?: false
+
+            val readMediaVisualUserSelected = results[Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED] ?: false
+
+            val readExternalStorage = results[Manifest.permission.WRITE_EXTERNAL_STORAGE] ?: false
+
+            if ((readMediaImages && readMediaVideo) || readMediaVisualUserSelected || readExternalStorage) {
                 goToOtherHasWriteStoragePermission()
             } else {
                 showDeniedPermissionsDialog(PERMISSION_WRITE_STORAGE)
@@ -73,7 +66,13 @@ abstract class PermissionActivity<VB : ViewBinding> : CoreActivity<VB>() {
             if (granted) {
                 openAppSystemSettingsContract.launch(PERMISSION_WRITE_STORAGE)
             } else {
-                requestWriteStoragePermissions.launch(arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED))
+                requestWriteStoragePermissions.launch(
+                    arrayOf(
+                        Manifest.permission.READ_MEDIA_IMAGES,
+                        Manifest.permission.READ_MEDIA_VIDEO,
+                        Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+                    )
+                )
             }
         }
     }
@@ -88,22 +87,27 @@ abstract class PermissionActivity<VB : ViewBinding> : CoreActivity<VB>() {
                 PERMISSION_WRITE_STORAGE -> {
                     // Permission request logic
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-                        when (PackageManager.PERMISSION_GRANTED) {
-                            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) -> {
-                                callback.invoke(true)
-                            }
-
-                            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED) -> {
-                                writeStoragePermissionsDialog?.show()
-                                dialogLayout(writeStoragePermissionsDialog)
-                            }
-
-                            else -> {
-                                requestWriteStoragePermissions.launch(arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED))
-                            }
+                        if (hasImageAndVideoPermission()) {
+                            callback.invoke(true)
+                        } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED) == PackageManager.PERMISSION_GRANTED) {
+                            writeStoragePermissionsDialog?.show()
+                            dialogLayout(writeStoragePermissionsDialog)
+                        } else {
+                            requestWriteStoragePermissions.launch(
+                                arrayOf(
+                                    Manifest.permission.READ_MEDIA_IMAGES,
+                                    Manifest.permission.READ_MEDIA_VIDEO,
+                                    Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+                                )
+                            )
                         }
                     } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        requestWriteStoragePermissions.launch(arrayOf(Manifest.permission.READ_MEDIA_IMAGES))
+                        requestWriteStoragePermissions.launch(
+                            arrayOf(
+                                Manifest.permission.READ_MEDIA_IMAGES,
+                                Manifest.permission.READ_MEDIA_VIDEO
+                            )
+                        )
                     } else {
                         requestWriteStoragePermissions.launch(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE))
                     }
@@ -116,6 +120,11 @@ abstract class PermissionActivity<VB : ViewBinding> : CoreActivity<VB>() {
             //
             callback.invoke(false)
         }
+    }
+
+    private fun hasImageAndVideoPermission(): Boolean {
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_VIDEO) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun showDeniedPermissionsDialog(permissionId: Int) {
