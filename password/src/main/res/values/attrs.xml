@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OtpView">
+        <attr name="otpLength" format="integer"/>
+        <attr name="boxHeight" format="dimension"/>
+        <attr name="boxWidth" format="dimension"/>
+        <attr name="boxSpacing" format="dimension"/>
+        <attr name="boxCornerRadius" format="dimension"/>
+        <attr name="boxStrokeWidth" format="dimension"/>
+
+        <attr name="boxColor" format="color"/>
+        <attr name="boxColorActive" format="color"/>
+        <attr name="boxColorError" format="color"/>
+        <attr name="boxColorSuccess" format="color"/>
+        <attr name="boxTextColor" format="color"/>
+
+        <attr name="underlineHeight" format="dimension"/>
+        <attr name="underlineColor" format="color"/>
+        <attr name="underlineColorActive" format="color"/>
+        <attr name="underlineColorError" format="color"/>
+        <attr name="underlineColorSuccess" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="DialButtons">
+        <attr name="buttonPadding" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="textAppearance" format="reference"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="iconSize" format="dimension"/>
+    </declare-styleable>
+</resources>

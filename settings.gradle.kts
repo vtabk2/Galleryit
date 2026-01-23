@@ -34,3 +34,5 @@ include(":core:dimens")
 include(":core:utilities")
 include(":core:preference")
 include(":core:rate")
+
+include(":password")

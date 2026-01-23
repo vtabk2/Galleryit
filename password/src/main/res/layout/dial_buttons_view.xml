@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:background="#80000000"
+    android:layoutDirection="ltr"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/groupDots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/groupDial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgpass1"
+            android:layout_width="@dimen/_24dp"
+            android:layout_height="@dimen/_24dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/passview_style_1" />
+
+        <ImageView
+            android:id="@+id/imgpass2"
+            android:layout_width="@dimen/_24dp"
+            android:layout_height="@dimen/_24dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_toRightOf="@+id/imgpass1"
+            android:src="@drawable/passview_style_1" />
+
+        <ImageView
+            android:id="@+id/imgpass3"
+            android:layout_width="@dimen/_24dp"
+            android:layout_height="@dimen/_24dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_toRightOf="@+id/imgpass2"
+            android:src="@drawable/passview_style_1" />
+
+        <ImageView
+            android:id="@+id/imgpass4"
+            android:layout_width="@dimen/_24dp"
+            android:layout_height="@dimen/_24dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_toRightOf="@+id/imgpass3"
+            android:src="@drawable/passview_style_1" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/groupDial"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/groupDots"
+        app:layout_constraintWidth_max="@dimen/_300dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/one_btn"
+            style="@style/Text_PIN_Style"
+            android:background="@drawable/passcode_button_selector"
+            android:contentDescription="@null"
+            android:text="1"
+            app:layout_constraintBottom_toTopOf="@id/four_btn"
+            app:layout_constraintEnd_toStartOf="@id/two_btn"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/two_btn"
+            style="@style/Text_PIN_Style"
+            android:background="@drawable/passcode_button_selector"
+            android:text="2"
+            app:layout_constraintBottom_toTopOf="@id/five_btn"
+            app:layout_constraintEnd_toStartOf="@id/three_btn"
+            app:layout_constraintStart_toEndOf="@id/one_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/three_btn"
+            style="@style/Text_PIN_Style"
+            android:text="3"
+            app:layout_constraintBottom_toTopOf="@id/six_btn"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/two_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/four_btn"
+            style="@style/Text_PIN_Style"
+            android:contentDescription="@null"
+            android:text="4"
+            app:layout_constraintBottom_toTopOf="@id/seven_btn"
+            app:layout_constraintEnd_toStartOf="@id/five_btn"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/one_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/five_btn"
+            style="@style/Text_PIN_Style"
+            android:text="5"
+            app:layout_constraintBottom_toTopOf="@id/eight_btn"
+            app:layout_constraintEnd_toStartOf="@id/six_btn"
+            app:layout_constraintStart_toEndOf="@id/four_btn"
+            app:layout_constraintTop_toBottomOf="@id/two_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/six_btn"
+            style="@style/Text_PIN_Style"
+            android:text="6"
+            app:layout_constraintBottom_toTopOf="@id/nine_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/five_btn"
+            app:layout_constraintTop_toBottomOf="@id/three_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/seven_btn"
+            style="@style/Text_PIN_Style"
+            android:background="@drawable/passcode_button_selector"
+            android:text="7"
+            app:layout_constraintBottom_toTopOf="@id/spaceNone"
+            app:layout_constraintEnd_toStartOf="@id/eight_btn"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/four_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/eight_btn"
+            style="@style/Text_PIN_Style"
+            android:text="8"
+            app:layout_constraintBottom_toTopOf="@id/zero_btn"
+            app:layout_constraintEnd_toStartOf="@id/nine_btn"
+            app:layout_constraintStart_toEndOf="@id/seven_btn"
+            app:layout_constraintTop_toBottomOf="@id/five_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nine_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/passcode_button_selector"
+            android:contentDescription="@null"
+            android:text="9"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_30sp"
+            app:layout_constraintBottom_toTopOf="@id/imv_delete"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/eight_btn"
+            app:layout_constraintTop_toBottomOf="@id/six_btn"
+            app:layout_constraintWidth_percent="0.25"
+
+            />
+
+        <Space
+            android:id="@+id/spaceNone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/zero_btn"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/zero_btn"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/zero_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/zero_btn"
+            style="@style/Text_PIN_Style"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imv_delete"
+            app:layout_constraintStart_toEndOf="@id/spaceNone"
+            app:layout_constraintTop_toBottomOf="@id/seven_btn" />
+
+        <ImageView
+            android:id="@+id/imv_delete"
+            style="@style/Text_PIN_Style"
+            android:src="@drawable/btn_dial_delete"
+            android:visibility="visible"
+            android:background="@drawable/passcode_delete_button_selector"
+            app:layout_constraintBottom_toBottomOf="@id/zero_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/zero_btn"
+            app:layout_constraintTop_toTopOf="@id/zero_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

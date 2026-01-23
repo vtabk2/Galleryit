@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text_PIN_Style">
+        <item name="android:textSize">@dimen/_30dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">@font/roboto_flex_medium</item>
+        <item name="android:layout_width">@dimen/_72dp</item>
+        <item name="android:layout_height">@dimen/_72dp</item>
+        <item name="android:background">@drawable/passcode_button_selector</item>
+    </style>
+</resources>
