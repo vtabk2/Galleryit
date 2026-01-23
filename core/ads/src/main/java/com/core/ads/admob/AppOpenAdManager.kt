@@ -5,28 +5,27 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.core.ads.domain.AdOpenAdUiResource
+import com.core.ads.domain.AdsManager
+import com.core.ads.model.PreventShowManyInterstitialAds
+import com.core.config.domain.RemoteConfigRepository
+import com.core.config.domain.data.CoreAdPlaceName
+import com.core.config.domain.data.IAdPlaceName
+import com.core.utilities.getCurrentTimeInSecond
+import com.core.utilities.manager.isNetworkConnected
+import com.core.utilities.removeDimForReopenApp
+import com.core.utilities.showDimForReopenApp
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.gms.ads.appopen.AppOpenAd.AppOpenAdLoadCallback
-import dagger.hilt.android.qualifiers.ApplicationContext
-import com.core.ads.domain.AdOpenAdUiResource
-import com.core.ads.domain.AdsManager
-import com.core.ads.model.PreventShowManyInterstitialAds
-import com.core.config.domain.RemoteConfigRepository
-import com.core.config.domain.data.IAdPlaceName
-import com.core.config.domain.data.CoreAdPlaceName
-import com.core.utilities.getCurrentTimeInSecond
-import com.core.utilities.manager.isNetworkConnected
-import com.core.utilities.removeDimForReopenApp
-import com.core.utilities.showDimForReopenApp
 import com.google.firebase.Firebase
 import com.google.firebase.crashlytics.crashlytics
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -45,7 +44,7 @@ class AppOpenAdManager @Inject constructor(
     private val remoteConfigRepository: RemoteConfigRepository,
     private val adManager: AdsManager,
     private val reOpenShowCondition: ReOpenShowCondition
-) : LifecycleObserver, Application.ActivityLifecycleCallbacks {
+) : DefaultLifecycleObserver, Application.ActivityLifecycleCallbacks {
 
     companion object {
         const val TAG = "AdmobManager"
@@ -68,8 +67,9 @@ class AppOpenAdManager @Inject constructor(
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun onStart() {
+    override fun onStart(owner: LifecycleOwner) {
+        super.onStart(owner)
+
         if (isFirstOpenApp || !reOpenShowCondition.isCanShow()) {
             return
         }
@@ -81,8 +81,8 @@ class AppOpenAdManager @Inject constructor(
         }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun onStop() {
+    override fun onStop(owner: LifecycleOwner) {
+        super.onStop(owner)
         if (isFirstOpenApp) {
             return
         }
