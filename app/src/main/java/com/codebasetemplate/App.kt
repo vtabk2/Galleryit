@@ -1,5 +1,10 @@
 package com.codebasetemplate
 
+import VaultKeyProvider
+import android.util.Log
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.core.ads.BaseAdmobApplication
 import com.core.ads.admob.ReOpenShowCondition
 import com.core.billing.ProductIdManager
@@ -9,7 +14,7 @@ import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 @HiltAndroidApp
-class App : BaseAdmobApplication() {
+class App : BaseAdmobApplication(), DefaultLifecycleObserver {
 
     @Inject
     lateinit var purchasePreferences: PurchasePreferences
@@ -25,34 +30,18 @@ class App : BaseAdmobApplication() {
     }
 
     override fun initOtherConfig() {
-        createOtherShortCut()
-        registerKeyVipList()
-
         RateInApp.instance.registerActivityLifecycle(this)
         RateInApp.instance.isHideNavigationBar = true
         RateInApp.instance.isHideStatusBar = true
         RateInApp.instance.isSpaceStatusBar = true
         RateInApp.instance.isSpaceDisplayCutout = true
+
+        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
     }
 
-
-
-    private fun createOtherShortCut() {
-        //TODO tạo thêm shortcut
-    }
-
-    /**
-     * Đăng ký các key để xác định userVip của ứng dụng (đây là các key lưu trạng thái mua các gói vip trong ứng dụng)
-     */
-    private fun registerKeyVipList() {
-        /*purchasePreferences.registerKeyVipList(
-            keyVipList = mutableListOf(
-                KEY_IS_PRO_LIFE_TIME,
-                KEY_IS_PRO_BY_YEAR,
-                KEY_IS_PRO_BY_MONTH,
-                KEY_IS_PRO_BY_WEEK,
-            )
-        )*/
+    override fun onStop(owner: LifecycleOwner) {
+        Log.d("TAG5", "App_onStop: ")
+        VaultKeyProvider.clearMemoryCache()
     }
 
     companion object {

@@ -61,6 +61,7 @@ hiltAndroid = "2.57.2"
 junit = "4.13.2"
 androidxJunit = "1.3.0"
 espressoCore = "3.7.0"
+lifecycleProcessVersion = "2.10.0"
 
 [libraries]
 ######################################################################
@@ -162,6 +163,7 @@ glide-ksp = { module = "com.github.bumptech.glide:ksp", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycleProcessVersion" }
 
 
 [plugins]

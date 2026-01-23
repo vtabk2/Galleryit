@@ -14,6 +14,7 @@ import com.codebasetemplate.utils.extensions.hasPermission
 import com.codebasetemplate.utils.glide.thumb.CacheThumbnail
 import com.codebasetemplate.utils.glide.thumb.MediaType
 import java.io.File
+import java.net.URLConnection
 
 object LoadImageDataUtils {
 
@@ -265,6 +266,94 @@ object LoadImageDataUtils {
             }
         }
     }
+
+    fun getNameAndMime(
+        context: Context,
+        path: String
+    ): MediaInfo {
+        return queryImage(context, path)
+            ?: queryVideo(context, path)
+            ?: fallback(path)
+    }
+
+    private fun queryImage(
+        context: Context,
+        path: String
+    ): MediaInfo? {
+
+        val projection = arrayOf(
+            MediaStore.Images.Media.DISPLAY_NAME,
+            MediaStore.Images.Media.MIME_TYPE
+        )
+
+        context.contentResolver.query(
+            imageUri,
+            projection,
+            "${MediaStore.Images.Media.DATA}=?",
+            arrayOf(path),
+            null
+        )?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                return MediaInfo(
+                    name = cursor.getString(0),
+                    mime = cursor.getString(1),
+                    mediaType = MediaType.IMAGE
+                )
+            }
+        }
+        return null
+    }
+
+    private fun queryVideo(
+        context: Context,
+        path: String
+    ): MediaInfo? {
+
+        val projection = arrayOf(
+            MediaStore.Video.Media.DISPLAY_NAME,
+            MediaStore.Video.Media.MIME_TYPE
+        )
+
+        context.contentResolver.query(
+            videoUri,
+            projection,
+            "${MediaStore.Video.Media.DATA}=?",
+            arrayOf(path),
+            null
+        )?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                return MediaInfo(
+                    name = cursor.getString(0),
+                    mime = cursor.getString(1),
+                    mediaType = MediaType.VIDEO
+                )
+            }
+        }
+        return null
+    }
+
+    private fun fallback(path: String): MediaInfo {
+        val file = File(path)
+        val mime = URLConnection.guessContentTypeFromName(file.name) ?: "application/octet-stream"
+
+        val mediaType = when {
+            mime.startsWith("image/") -> MediaType.IMAGE
+            mime.startsWith("video/") -> MediaType.VIDEO
+            else -> MediaType.IMAGE
+        }
+
+        return MediaInfo(
+            name = file.name,
+            mime = mime,
+            mediaType = mediaType
+        )
+    }
+
+    data class MediaInfo(
+        val name: String,
+        val mime: String,
+        val mediaType: MediaType
+    )
 
     data class AlbumDetail(
         val albumName: String,
