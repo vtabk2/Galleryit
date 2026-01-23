@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -47,6 +49,8 @@ class AlbumDetailAdapter(
                 holder.slRoot.isSelected = isSelected
                 holder.imageSelected.visibleIf(isSelected)
 
+                ViewCompat.setTransitionName(holder.imageDetail, cacheThumbnail.path)
+
                 holder.imageRipple.setOnTouchListener(PickPhotoRecyclerViewItemListener(context, position, object : PickPhotoRecyclerViewItemListener.PickPhotoGestureListener {
                     override fun onClick(position: Int) {
                         if (urlList.size > position) {
@@ -57,7 +61,7 @@ class AlbumDetailAdapter(
                             ) {
                                 onSelectedImageListener.onClickFailed()
                             } else {
-                                onSelectedImageListener.onSelectedImage(cacheThumbnail.path)
+                                onSelectedImageListener.onSelectedImage(holder.imageDetail, cacheThumbnail.path)
                             }
                         }
                     }
@@ -111,7 +115,7 @@ class AlbumDetailAdapter(
     }
 
     interface OnSelectedImageListener {
-        fun onSelectedImage(path: String)
+        fun onSelectedImage(imageView: ImageView, path: String)
         fun onClickFailed()
         fun onItemLongTouch(view: View, path: String) {}
         fun onItemCancelTouch(view: View) {}

@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.codebasetemplate.R
 import com.codebasetemplate.core.base_ui.CoreFragment
 import com.codebasetemplate.databinding.FragmentMainBinding
 import com.codebasetemplate.features.app.main.adapter.AlbumDetailAdapter
+import com.codebasetemplate.features.app.main.fragment.preview.PreviewFragment
 import com.codebasetemplate.required.shortcut.AppScreenType
 import com.codebasetemplate.utils.glide.thumb.CacheThumbnail
 import com.codebasetemplate.utils.glide.thumb.MediaType
@@ -62,8 +65,16 @@ class MainFragment : CoreFragment<FragmentMainBinding>() {
             urlList = urlList,
             pathList = pathList,
             onSelectedImageListener = object : AlbumDetailAdapter.OnSelectedImageListener {
-                override fun onSelectedImage(path: String) {
-
+                override fun onSelectedImage(imageView: ImageView, path: String) {
+                    activity?.let { ac ->
+                        ac.supportFragmentManager
+                            .beginTransaction()
+                            .setReorderingAllowed(true)
+                            .addSharedElement(imageView, path)
+                            .replace(R.id.flPreview, PreviewFragment.newInstance(path))
+                            .addToBackStack(null)
+                            .commit()
+                    }
                 }
 
                 override fun onClickFailed() {

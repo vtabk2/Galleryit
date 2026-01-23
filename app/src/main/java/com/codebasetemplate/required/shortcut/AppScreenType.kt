@@ -23,4 +23,5 @@ sealed class AppScreenType(override val screenName: String): ScreenType {
     object None: AppScreenType("")
     object Shop: AppScreenType("Shop")
     object MainFragment: AppScreenType("MainFragment")
+    object PreviewFragment: AppScreenType("PreviewFragment")
 }
