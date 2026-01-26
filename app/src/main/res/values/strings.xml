@@ -86,4 +86,11 @@
     <string name="title_lock_reset_pin_confirm">Confirm new PIN</string>
     <string name="title_lock_reset_pattern_enter">Reset pattern</string>
     <string name="title_lock_reset_pattern_confirm">Confirm new pattern</string>
+
+    <string name="text_security_question">Security Question</string>
+    <string name="text_select_question">Select Question</string>
+    <string name="text_answer">Answer</string>
+    <string name="text_confirm">Confirm</string>
+    <string name="text_type_your_answer_here">Type your answer here</string>
+    <string name="text_des_security_question">This question is used to verify your identity in case you forget your passcode.</string>
 </resources>

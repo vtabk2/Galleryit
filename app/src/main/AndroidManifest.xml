@@ -63,6 +63,11 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".features.app.locker.security.SecurityQuestionActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".features.feature_uninstall.ui.UninstallActivityHost" />
 
         <activity android:name=".features.feature_language.ui.LanguageActivity" />

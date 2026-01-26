@@ -1,6 +1,8 @@
 package com.codebasetemplate.features.app.locker.setup
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -11,7 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import com.codebasetemplate.R
 import com.codebasetemplate.core.base_ui.CoreActivity
 import com.codebasetemplate.databinding.ActivityPasscodeSetupBinding
+import com.codebasetemplate.features.app.locker.security.SecurityQuestionActivity
 import com.core.baseui.ext.collectFlowOn
+import com.core.baseui.toolbar.CoreToolbarView
 import com.core.password.LockPatternView
 import com.core.password.PasscodeInputView
 import com.core.password.PasscodeType
@@ -59,6 +63,12 @@ class LockSetupActivity : CoreActivity<ActivityPasscodeSetupBinding>() {
 
     override fun handleObservable() {
         super.handleObservable()
+
+        viewBinding.toolbar.onToolbarListener = object : CoreToolbarView.OnToolbarListener {
+            override fun onBack() {
+                setupAfterOnBackPressed()
+            }
+        }
 
         viewBinding.switchTypeText.setOnClickListener {
             passcodeSetupViewModel.switchType()
@@ -234,11 +244,12 @@ class LockSetupActivity : CoreActivity<ActivityPasscodeSetupBinding>() {
     }
 
     private fun handlePasscodeSetSuccess() {
+        Log.d("TAG5", "LockSetupActivity_handlePasscodeSetSuccess: reason = $reason")
         when (reason) {
             CREATE_NEW -> {
-//                val intent = Intent(this, SecurityQuestionActivity::class.java)
-//                intent.putExtra(SecurityQuestionActivity.EXTRA_FROM_PASSCODE_SETUP, true)
-//                setSecurityQuestionActivity.launch(intent)
+                val intent = Intent(this, SecurityQuestionActivity::class.java)
+                intent.putExtra(SecurityQuestionActivity.EXTRA_FROM_PASSCODE_SETUP, true)
+                setSecurityQuestionActivity.launch(intent)
             }
 
             CHANGE_PASSWORD -> {

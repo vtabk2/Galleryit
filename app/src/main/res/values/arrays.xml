@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="security_questions">
+        <item>Where do you feel most at peace when you are alone?</item>
+        <item>What word best describes you?</item>
+        <item>What private nickname do you have for yourself?</item>
+        <item>What place marks an important beginning in your life?</item>
+        <item>What personal symbol do you use to protect your data?</item>
+    </string-array>
+</resources>

@@ -1,5 +1,6 @@
 package com.codebasetemplate.features.app.locker.setup
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codebasetemplate.features.app.locker.LockRepository
@@ -145,6 +146,7 @@ class PasscodeSetupViewModel @Inject constructor(
 
     private fun savePasscodeToSettings() {
         viewModelScope.launch {
+            Log.d("TAG5", "PasscodeSetupViewModel_savePasscodeToSettings: ")
             try {
                 // Save passcode settings using Settings directly (no encryption)
                 lockRepository.passcodeType = _currentPasscodeType.value.value

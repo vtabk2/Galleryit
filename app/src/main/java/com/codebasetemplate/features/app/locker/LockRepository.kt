@@ -14,7 +14,7 @@ class LockRepository @Inject constructor(@ApplicationContext private val context
     var passcode: String?
         get() = config.passcode
         set(value) {
-            passcode = hashStringSHA256(value ?: "")
+            config.passcode = hashStringSHA256(value ?: "")
         }
 
     var passcodeType: String

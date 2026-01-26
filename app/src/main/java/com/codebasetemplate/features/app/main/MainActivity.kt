@@ -75,7 +75,7 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
 
     override fun handleObservable() {
         viewBinding.clLocker.setOnSingleClick {
-            if (isExternalStorageManager) {
+            if (checkExternalStorageManager()) {
                 if (config.passcodeType == PasscodeType.NONE.value) {
                     val intent = Intent(this, LockSetupActivity::class.java)
                     startPasscodeSetup.launch(intent)
@@ -100,10 +100,12 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
         }
     }
 
-    val isExternalStorageManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-        Environment.isExternalStorageManager()
-    } else {
-        true
+    fun checkExternalStorageManager(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            Environment.isExternalStorageManager()
+        } else {
+            true
+        }
     }
 
     fun ensureManageAllFilesPermission() {

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6F2F2">
+
+    <!-- Background Image (neo đáy; sẽ được "dịch" bằng code theo IME) -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_height="200dp"/>
+
+    <!-- Overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Header -->
+    <com.core.baseui.toolbar.CoreToolbarView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ctv_ic_back_icon="@drawable/selector_ic_back_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Title Section -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_18dp"
+        android:paddingHorizontal="@dimen/_16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_flex_semibold"
+            android:text="@string/text_security_question"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/subtitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:gravity="center"
+            android:text="@string/text_des_security_question"
+            android:textColor="#CFDBDB"
+            android:textSize="@dimen/_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleText"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Question Section -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/questionSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="@dimen/_16dp"
+        app:layout_constraintTop_toBottomOf="@id/titleSection">
+
+        <TextView
+            android:id="@+id/questionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_flex_medium"
+            android:text="@string/text_select_question"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_64dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:background="@drawable/bg_rounded_border_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/questionLabel">
+
+            <TextView
+                android:id="@+id/questionContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_2dp"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:drawableEnd="@drawable/ic_drop_down"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_64dp"
+                android:paddingHorizontal="@dimen/_16dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/questionLabel"
+                tools:text="What's is your birthday?"/>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Answer Section -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/answerSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40dp"
+        android:paddingHorizontal="@dimen/_16dp"
+        app:layout_constraintTop_toBottomOf="@id/questionSection">
+
+        <TextView
+            android:id="@+id/answerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_flex_medium"
+            android:text="@string/text_answer"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_64dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_rounded_border_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/answerLabel">
+
+            <EditText
+                android:id="@+id/answerInput"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_2dp"
+                android:background="@null"
+                android:fontFamily="@font/roboto_flex_medium"
+                android:hint="@string/text_type_your_answer_here"
+                android:inputType="text"
+                android:maxLength="50"
+                android:paddingHorizontal="@dimen/_16dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#99FFFFFF"
+                android:textSize="@dimen/_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_default="spread"
+                tools:text="Example answer"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Confirm Button: neo trên imeInset -->
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_56dp"
+        android:layout_marginHorizontal="@dimen/_24dp"
+        android:text="@string/text_confirm"
+        android:textAppearance="@style/TextAppearance.Large.Bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20sp"
+        app:backgroundTint="@color/color_selected"
+        app:layout_constraintBottom_toBottomOf="@id/spaceBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/answerSection"
+        app:layout_constraintWidth_max="@dimen/_400dp"/>
+
+    <Space
+        android:id="@+id/spaceBottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
