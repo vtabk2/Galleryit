@@ -65,4 +65,6 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="passcode_is_incorrect">Passcode is incorrect</string>
     <string name="set_passcode">Set Passcode</string>
+
+    <string name="switch_to_pattern">Switch to Pattern</string>
 </resources>

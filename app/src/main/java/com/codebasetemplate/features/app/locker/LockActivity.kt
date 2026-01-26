@@ -2,6 +2,7 @@ package com.codebasetemplate.features.app.locker
 
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.viewModels
 import com.codebasetemplate.core.base_ui.CoreActivity
 import com.codebasetemplate.databinding.ActivityLockBinding
 import com.core.baseui.toolbar.CoreToolbarView
@@ -9,6 +10,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LockActivity : CoreActivity<ActivityLockBinding>() {
+
+    private val lockViewModel: LockViewModel by viewModels()
 
     override fun getSurfaceView(): View {
         return viewBinding.toolbar

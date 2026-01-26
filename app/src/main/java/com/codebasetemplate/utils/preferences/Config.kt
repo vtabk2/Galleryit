@@ -19,6 +19,14 @@ class Config(val context: Context) {
         get() = prefs.getBoolean(KEY_IS_CHECK_VERSION, false)
         set(value) = prefs.edit { putBoolean(KEY_IS_CHECK_VERSION, value) }
 
+    var passcode: String
+        get() = prefs.getString(KEY_PASSCODE, "") ?: ""
+        set(value) = prefs.edit { putString(KEY_PASSCODE, value) }
+
+    var passcodeType: String
+        get() = prefs.getString(KEY_PASSCODE_TYPE, "") ?: ""
+        set(value) = prefs.edit { putString(KEY_PASSCODE_TYPE, value) }
+
     companion object {
 
         fun newInstance(context: Context) = Config(context)
@@ -28,5 +36,9 @@ class Config(val context: Context) {
         private const val KEY_IS_SHOW_NOTE_LONG_PRESS = "KEY_IS_SHOW_NOTE_LONG_PRESS"
 
         private const val KEY_IS_CHECK_VERSION = "KEY_IS_CHECK_VERSION"
+
+        private const val KEY_PASSCODE = "KEY_PASSCODE"
+
+        private const val KEY_PASSCODE_TYPE = "KEY_PASSCODE_TYPE"
     }
 }
