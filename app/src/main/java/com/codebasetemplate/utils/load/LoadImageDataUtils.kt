@@ -37,7 +37,7 @@ object LoadImageDataUtils {
         MediaStore.Video.Media.EXTERNAL_CONTENT_URI
     }
 
-    fun getAlbumList(context: Context, callback: (AlbumDetail) -> Unit): MutableList<Album> {
+    fun getAlbumList(context: Context, callbackAlbum: (MutableList<Album>) -> Unit, callbackAlbumDetail: (AlbumDetail) -> Unit) {
         val albumMap = hashMapOf<String, Album>()
         val recentAlbum = Album(albumName = context.getString(R.string.text_recent))
 
@@ -70,7 +70,8 @@ object LoadImageDataUtils {
 
             albumList[index].isSelected = true
 
-            callback(
+            callbackAlbum.invoke(albumList)
+            callbackAlbumDetail.invoke(
                 getDetailList(
                     context,
                     albumList[index].albumId,
@@ -80,7 +81,7 @@ object LoadImageDataUtils {
             )
         }
 
-        return albumList
+        callbackAlbum.invoke(albumList)
     }
 
     fun getDetailList(

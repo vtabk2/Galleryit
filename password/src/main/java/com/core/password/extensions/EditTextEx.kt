@@ -88,6 +88,7 @@ fun EditText.setSafeSelection(index: Int?) {
     try {
         setSelection(safeIndex)
     } catch (e: Exception) {
+        e.printStackTrace()
         // Absolute safety net (should never happen)
         setSelection(length)
     }
@@ -117,6 +118,7 @@ fun EditText.setSafeSelection(start: Int?, end: Int?) {
     try {
         setSelection(finalStart, finalEnd)
     } catch (e: Exception) {
+        e.printStackTrace()
         setSelection(length)
     }
 }

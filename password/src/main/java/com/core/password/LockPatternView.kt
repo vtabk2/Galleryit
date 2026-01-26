@@ -9,8 +9,11 @@ import android.graphics.Matrix
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.Rect
+import android.os.Build
 import android.os.Debug
+import android.os.VibrationEffect
 import android.os.Vibrator
+import android.os.VibratorManager
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
@@ -57,7 +60,12 @@ class LockPatternView @JvmOverloads constructor(context: Context, attrs: Attribu
     private val mBitmapWidth: Int
     private val mBitmapHeight: Int
 
-    private val vibe: Vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator // Vibrator for creating tactile feedback
+    private val vibrator: Vibrator? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        val vibratorManager = context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as? VibratorManager
+        vibratorManager?.defaultVibrator
+    } else {
+        context.getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
+    }
 
     private val mCircleMap: HashMap<DrawingColor?, Bitmap?>
 
@@ -213,7 +221,7 @@ class LockPatternView @JvmOverloads constructor(context: Context, attrs: Attribu
         val width = w - getPaddingLeft() - getPaddingRight()
         mSquareWidth = width / 3.0f
 
-        val height = h - getPaddingTop() - getPaddingBottom()
+        val height = h - paddingTop - paddingBottom
         mSquareHeight = height / 3.0f
     }
 
@@ -257,7 +265,11 @@ class LockPatternView @JvmOverloads constructor(context: Context, attrs: Attribu
             }
             addCellToPattern(cell)
             if (this.isTactileFeedbackEnabled) {
-                vibe.vibrate(VIBE_PATTERN, -1) // Generate tactile feedback
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    vibrator?.vibrate(VibrationEffect.createWaveform(VIBE_PATTERN, -1))
+                } else {
+                    vibrator?.vibrate(VIBE_PATTERN, -1)
+                }
             }
             return cell
         }

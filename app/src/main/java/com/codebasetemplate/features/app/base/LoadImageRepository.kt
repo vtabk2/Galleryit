@@ -16,10 +16,13 @@ class LoadImageRepository @Inject constructor(@ApplicationContext private val co
         callbackAlbumList: (MutableList<LoadImageDataUtils.Album>) -> Unit,
         callbackDetailList: (LoadImageDataUtils.AlbumDetail) -> Unit
     ) {
-        callbackAlbumList.invoke(LoadImageDataUtils.getAlbumList(context) {
-            isLoadingAlbum.set(false)
-            callbackDetailList.invoke(it)
-        })
+        LoadImageDataUtils.getAlbumList(
+            context,
+            callbackAlbum = callbackAlbumList,
+            callbackAlbumDetail = {
+                isLoadingAlbum.set(false)
+                callbackDetailList.invoke(it)
+            })
     }
 
     fun loadAlbumDetail(albumId: String, albumName: String, reload: Boolean, callbackDetailList: (LoadImageDataUtils.AlbumDetail) -> Unit) {
