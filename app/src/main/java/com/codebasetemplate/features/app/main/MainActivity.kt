@@ -1,9 +1,14 @@
 package com.codebasetemplate.features.app.main
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.net.toUri
 import com.codebasetemplate.R
 import com.codebasetemplate.databinding.ActivityMainBinding
 import com.codebasetemplate.features.app.base.BaseSelectedImageActivity
@@ -13,6 +18,7 @@ import com.codebasetemplate.features.app.main.fragment.MainFragment
 import com.codebasetemplate.features.app.main.fragment.ShareMainViewModel
 import com.core.baseui.ext.collectFlowOn
 import com.core.baseui.ext.collectFlowOnNullable
+import com.core.utilities.setOnSingleClick
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,6 +63,16 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
                 viewBinding.vpMain.offscreenPageLimit = position
             }
         })
+    }
+
+    override fun handleObservable() {
+        viewBinding.clLocker.setOnSingleClick {
+            if (isExternalStorageManager) {
+
+            } else {
+                ensureManageAllFilesPermission()
+            }
+        }
 
         collectFlowOn(selectedImageViewModel.albumListFlow) { albumList ->
             shareMainViewModel.updateAlbumList(albumList = albumList)
@@ -64,6 +80,28 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
 
         collectFlowOnNullable(selectedImageViewModel.albumDetailFlow) { albumDetail ->
             shareMainViewModel.updateAlbumDetail(albumDetail = albumDetail)
+        }
+    }
+
+    val isExternalStorageManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        Environment.isExternalStorageManager()
+    } else {
+        true
+    }
+
+    fun ensureManageAllFilesPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager()) {
+                try {
+                    val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+                    intent.data = "package:${packageName}".toUri()
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                    startActivity(intent)
+                }
+            }
         }
     }
 }

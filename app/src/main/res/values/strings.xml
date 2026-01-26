@@ -57,4 +57,8 @@
     <string name="tab_all">All</string>
     <string name="tab_photos">Photos</string>
     <string name="tab_videos">Videos</string>
+
+    <string name="text_locker">Locker</string>
+    <string name="text_editor">Editor</string>
+    <string name="text_clean_up">Clean Up</string>
 </resources>

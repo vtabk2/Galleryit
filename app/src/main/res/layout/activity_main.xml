@@ -10,17 +10,110 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        app:ctv_ic_back_show="false"
         app:ctv_tv_title="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLocker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10dp"
+        android:background="@drawable/bg_main_actions"
+        app:layout_constraintEnd_toStartOf="@id/clEditor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageLocker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            app:srcCompat="@drawable/ic_notification"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLocker"
+            style="@style/TextHome"
+            android:text="@string/text_locker"
+            app:layout_constraintEnd_toEndOf="@id/imageLocker"
+            app:layout_constraintStart_toStartOf="@id/imageLocker"
+            app:layout_constraintTop_toBottomOf="@id/imageLocker"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clEditor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10dp"
+        android:background="@drawable/bg_main_actions"
+        app:layout_constraintEnd_toStartOf="@id/clCleanUp"
+        app:layout_constraintStart_toEndOf="@id/clLocker"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageEditor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            app:srcCompat="@drawable/ic_notification"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEditor"
+            style="@style/TextHome"
+            android:text="@string/text_editor"
+            app:layout_constraintEnd_toEndOf="@id/imageEditor"
+            app:layout_constraintStart_toStartOf="@id/imageEditor"
+            app:layout_constraintTop_toBottomOf="@id/imageEditor"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clCleanUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:background="@drawable/bg_main_actions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/clEditor"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageCleanUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            app:srcCompat="@drawable/ic_notification"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCleanUp"
+            style="@style/TextHome"
+            android:text="@string/text_clean_up"
+            app:layout_constraintEnd_toEndOf="@id/imageCleanUp"
+            app:layout_constraintStart_toStartOf="@id/imageCleanUp"
+            app:layout_constraintTop_toBottomOf="@id/imageCleanUp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpMain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10dp"
         app:layout_constraintBottom_toTopOf="@id/customTabLayoutView"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+        app:layout_constraintTop_toBottomOf="@id/clEditor"/>
 
     <com.codebasetemplate.features.app.customview.CustomTabLayoutView
         android:id="@+id/customTabLayoutView"
