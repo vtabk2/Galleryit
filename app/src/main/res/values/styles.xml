@@ -135,6 +135,21 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="Text_Item_Security_Dropdown">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_2dp</item>
+        <item name="android:layout_marginEnd">@dimen/_2dp</item>
+        <item name="layout_constraintVertical_weight">1</item>
+        <item name="layout_constraintHeight_min">@dimen/_48dp</item>
+        <item name="android:background">@drawable/ripple_white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/_16dp</item>
+        <item name="android:paddingEnd">@dimen/_16dp</item>
+        <item name="android:textSize">@dimen/_16sp</item>
+        <item name="android:fontFamily">@font/roboto_flex_medium</item>
+    </style>
+
     <style name="TextAppearance.Large.Bold" parent="TextAppearance.Roboto.Bold">
         <item name="android:textSize">@dimen/_20sp</item>
     </style>

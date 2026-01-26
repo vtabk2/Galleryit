@@ -28,6 +28,14 @@ class Config(val context: Context) {
         get() = prefs.getString(KEY_PASSCODE_TYPE, PasscodeType.NONE.value) ?: PasscodeType.NONE.value
         set(value) = prefs.edit { putString(KEY_PASSCODE_TYPE, value) }
 
+    var securityQuestionIndex: Int
+        get() = prefs.getInt(KEY_SECURITY_QUESTION_INDEX, -1)
+        set(value) = prefs.edit { putInt(KEY_SECURITY_QUESTION_INDEX, value) }
+
+    var securityAnswer: String
+        get() = prefs.getString(KEY_SECURITY_ANSWER, "") ?: ""
+        set(value) = prefs.edit { putString(KEY_SECURITY_ANSWER, value) }
+
     companion object {
 
         fun newInstance(context: Context) = Config(context)
@@ -41,5 +49,7 @@ class Config(val context: Context) {
         private const val KEY_PASSCODE = "KEY_PASSCODE"
 
         private const val KEY_PASSCODE_TYPE = "KEY_PASSCODE_TYPE"
+        private const val KEY_SECURITY_QUESTION_INDEX = "KEY_SECURITY_QUESTION_INDEX"
+        private const val KEY_SECURITY_ANSWER = "KEY_SECURITY_ANSWER"
     }
 }

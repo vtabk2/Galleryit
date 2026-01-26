@@ -23,6 +23,18 @@ class LockRepository @Inject constructor(@ApplicationContext private val context
             config.passcodeType = value
         }
 
+    var securityQuestionIndex: Int
+        get() = config.securityQuestionIndex
+        set(value) {
+            config.securityQuestionIndex = value
+        }
+
+    var securityAnswer: String
+        get() = config.securityAnswer
+        set(value) {
+            config.securityAnswer = value
+        }
+
     fun verifyPasscode(input: String): Boolean {
         val stored = config.passcode
         return stored == hashStringSHA256(input)
