@@ -62,9 +62,28 @@
     <string name="text_editor">Editor</string>
     <string name="text_clean_up">Clean Up</string>
 
-    <string name="forgot_password">Forgot password?</string>
-    <string name="passcode_is_incorrect">Passcode is incorrect</string>
-    <string name="set_passcode">Set Passcode</string>
+    <string name="text_forgot_password">Forgot password?</string>
+    <string name="msg_passcode_is_incorrect">Passcode is incorrect</string>
+    <string name="text_set_passcode">Set Passcode</string>
 
-    <string name="switch_to_pattern">Switch to Pattern</string>
+    <string name="text_switch_to_pin">Switch to PIN</string>
+    <string name="text_switch_to_pattern">Switch to Pattern</string>
+    <string name="msg_passcode_setup_completed_successfully">Passcode setup completed successfully</string>
+    <string name="msg_passcode_not_saved">Passcode was not saved</string>
+    <string name="msg_your_pattern_must_have_at_least_4_dots">Your pattern must have at least 4 dots</string>
+    <string name="msg_pattern_must_have_at_least_4_dots">Pattern must have at least 4 dots</string>
+    <string name="msg_passcode_updated_successfully">Passcode updated successfully</string>
+
+    <string name="title_lock_create_pin_enter">Enter new PIN</string>
+    <string name="title_lock_create_pin_confirm">Confirm PIN</string>
+    <string name="title_lock_create_pattern_enter">Draw new pattern</string>
+    <string name="title_lock_create_pattern_confirm">Confirm pattern</string>
+    <string name="title_lock_change_pin_enter">Enter new PIN</string>
+    <string name="title_lock_change_pin_confirm">Confirm new PIN</string>
+    <string name="title_lock_change_pattern_enter">Draw new pattern</string>
+    <string name="title_lock_change_pattern_confirm">Confirm new pattern</string>
+    <string name="title_lock_reset_pin_enter">Reset PIN</string>
+    <string name="title_lock_reset_pin_confirm">Confirm new PIN</string>
+    <string name="title_lock_reset_pattern_enter">Reset pattern</string>
+    <string name="title_lock_reset_pattern_confirm">Confirm new pattern</string>
 </resources>

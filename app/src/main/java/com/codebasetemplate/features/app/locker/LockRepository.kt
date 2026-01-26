@@ -9,14 +9,22 @@ import javax.inject.Singleton
 
 @Singleton
 class LockRepository @Inject constructor(@ApplicationContext private val context: Context) {
-    var passcodeType: String
-        get() = context.config.passcodeType
+    private val config = context.config
+
+    var passcode: String?
+        get() = config.passcode
         set(value) {
-            context.config.passcodeType = value
+            passcode = hashStringSHA256(value ?: "")
+        }
+
+    var passcodeType: String
+        get() = config.passcodeType
+        set(value) {
+            config.passcodeType = value
         }
 
     fun verifyPasscode(input: String): Boolean {
-        val stored = context.config.passcode
+        val stored = config.passcode
         return stored == hashStringSHA256(input)
     }
 

@@ -7,6 +7,7 @@ import android.os.Environment
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.net.toUri
 import com.codebasetemplate.R
@@ -14,11 +15,14 @@ import com.codebasetemplate.databinding.ActivityMainBinding
 import com.codebasetemplate.features.app.base.BaseSelectedImageActivity
 import com.codebasetemplate.features.app.customview.CustomTabLayoutView
 import com.codebasetemplate.features.app.locker.LockActivity
+import com.codebasetemplate.features.app.locker.setup.LockSetupActivity
 import com.codebasetemplate.features.app.main.adapter.MainCategoryAdapter
 import com.codebasetemplate.features.app.main.fragment.MainFragment
 import com.codebasetemplate.features.app.main.fragment.ShareMainViewModel
+import com.codebasetemplate.utils.extensions.config
 import com.core.baseui.ext.collectFlowOn
 import com.core.baseui.ext.collectFlowOnNullable
+import com.core.password.PasscodeType
 import com.core.utilities.setOnSingleClick
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +38,9 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
 
     override fun bindingProvider(inflater: LayoutInflater): ActivityMainBinding {
         return ActivityMainBinding.inflate(inflater)
+    }
+
+    private val startPasscodeSetup = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
     }
 
     override fun initViews(savedInstanceState: Bundle?) {
@@ -69,11 +76,16 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
     override fun handleObservable() {
         viewBinding.clLocker.setOnSingleClick {
             if (isExternalStorageManager) {
-                val intentLock = Intent(this@MainActivity, LockActivity::class.java).apply {
-                    putExtra(LockActivity.EXTRA_LOCK_MODE, LockActivity.LOCK_MODE_UNLOCK_APP)
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                if (config.passcodeType == PasscodeType.NONE.value) {
+                    val intent = Intent(this, LockSetupActivity::class.java)
+                    startPasscodeSetup.launch(intent)
+                } else {
+                    val intentLock = Intent(this@MainActivity, LockActivity::class.java).apply {
+                        putExtra(LockActivity.EXTRA_LOCK_MODE, LockActivity.LOCK_MODE_UNLOCK_APP)
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    }
+                    startActivity(intentLock)
                 }
-                startActivity(intentLock)
             } else {
                 ensureManageAllFilesPermission()
             }

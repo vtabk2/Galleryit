@@ -3,6 +3,7 @@ package com.codebasetemplate.utils.preferences
 import android.content.Context
 import androidx.core.content.edit
 import com.codebasetemplate.BuildConfig
+import com.core.password.PasscodeType
 
 class Config(val context: Context) {
     private val prefs = context.getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
@@ -24,7 +25,7 @@ class Config(val context: Context) {
         set(value) = prefs.edit { putString(KEY_PASSCODE, value) }
 
     var passcodeType: String
-        get() = prefs.getString(KEY_PASSCODE_TYPE, "") ?: ""
+        get() = prefs.getString(KEY_PASSCODE_TYPE, PasscodeType.NONE.value) ?: PasscodeType.NONE.value
         set(value) = prefs.edit { putString(KEY_PASSCODE_TYPE, value) }
 
     companion object {
