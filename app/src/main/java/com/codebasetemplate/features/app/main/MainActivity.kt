@@ -13,6 +13,7 @@ import com.codebasetemplate.R
 import com.codebasetemplate.databinding.ActivityMainBinding
 import com.codebasetemplate.features.app.base.BaseSelectedImageActivity
 import com.codebasetemplate.features.app.customview.CustomTabLayoutView
+import com.codebasetemplate.features.app.locker.LockActivity
 import com.codebasetemplate.features.app.main.adapter.MainCategoryAdapter
 import com.codebasetemplate.features.app.main.fragment.MainFragment
 import com.codebasetemplate.features.app.main.fragment.ShareMainViewModel
@@ -68,7 +69,11 @@ class MainActivity : BaseSelectedImageActivity<ActivityMainBinding>() {
     override fun handleObservable() {
         viewBinding.clLocker.setOnSingleClick {
             if (isExternalStorageManager) {
-
+                val intentLock = Intent(this@MainActivity, LockActivity::class.java).apply {
+                    putExtra(LockActivity.EXTRA_LOCK_MODE, LockActivity.LOCK_MODE_UNLOCK_APP)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                startActivity(intentLock)
             } else {
                 ensureManageAllFilesPermission()
             }

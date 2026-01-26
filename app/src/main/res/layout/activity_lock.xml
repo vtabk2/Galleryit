@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_height="200dp"/>
+
+    <!--BG black alpha-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"/>
+
+    <!-- Header -->
+    <com.core.baseui.toolbar.CoreToolbarView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ctv_ic_back_icon="@drawable/selector_ic_back_white"
+        app:ctv_ic_back_show="true"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_flex_semibold"
+        android:text="@string/set_passcode"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+    <!-- tvPasscodeIncorrect -->
+    <TextView
+        android:id="@+id/tvPasscodeIncorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp"
+        android:text="@string/passcode_is_incorrect"
+        android:textColor="#FA5671"
+        android:textSize="@dimen/_18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        tools:visibility="visible"/>
+
+    <!-- PIN Input View -->
+    <com.core.password.PasscodeInputView
+        android:id="@+id/pinInputView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_16dp"
+        android:layoutDirection="ltr"
+        android:paddingHorizontal="@dimen/_30dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/tvForgotPassword"
+        app:layout_constraintTop_toBottomOf="@id/tvPasscodeIncorrect"
+        tools:visibility="visible"/>
+
+    <!-- Pattern Input View -->
+    <com.core.password.LockPatternView
+        android:id="@+id/patternInputView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_24dp"
+        android:layoutDirection="ltr"
+        android:paddingHorizontal="@dimen/_30dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/tvForgotPassword"
+        app:layout_constraintTop_toBottomOf="@id/tvPasscodeIncorrect"
+        tools:visibility="gone"/>
+
+    <!-- Forgot Password -->
+    <TextView
+        android:id="@+id/tvForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_30dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        android:text="@string/forgot_password"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

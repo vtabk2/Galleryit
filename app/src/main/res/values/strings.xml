@@ -61,4 +61,8 @@
     <string name="text_locker">Locker</string>
     <string name="text_editor">Editor</string>
     <string name="text_clean_up">Clean Up</string>
+
+    <string name="forgot_password">Forgot password?</string>
+    <string name="passcode_is_incorrect">Passcode is incorrect</string>
+    <string name="set_passcode">Set Passcode</string>
 </resources>

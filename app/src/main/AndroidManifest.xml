@@ -53,6 +53,11 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".features.app.locker.LockActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".features.feature_uninstall.ui.UninstallActivityHost" />
 
         <activity android:name=".features.feature_language.ui.LanguageActivity" />
@@ -69,18 +74,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_notification" />
-
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@android:color/white" />
-
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="fcm_channel_id" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

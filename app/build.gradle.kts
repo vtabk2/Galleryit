@@ -82,6 +82,7 @@ dependencies {
     implementation(project(":core:billing"))
     implementation(project(":core:dimens"))
     implementation(project(":core:rate"))
+    implementation(project(":password"))
 
     //Hilt
     implementation(libs.hilt.android)
